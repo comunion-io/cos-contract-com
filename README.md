@@ -11,7 +11,7 @@
 # 合约如何搭建本地环境
 1. 使用npm安装remixd工具，该工具会在本地建立一个websocket服务器，然后就可以使用网页remix端与其进行连接了， 运行命令
     ```
-        cnpm install -g remixd
+       npm install -g @remix-project/remixd
     ```
 2. 打开remix (https://remix.ethereum.org)
 3. 启动,

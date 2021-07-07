@@ -6,6 +6,8 @@ import "./interfaces/IUniswapV2Router01.sol";
 import "./interfaces/IErc20.sol";
 import "./common/FundPool.sol";
 import "./interfaces/IWETH.sol";
+import "@nomiclabs/buidler/console.sol";
+
 pragma experimental ABIEncoderV2;
 
 contract Disco {
@@ -148,6 +150,7 @@ contract Disco {
     * @param d  tuple forward.
     **/
     function newDisco(DiscoInfo memory d) public payable {
+         console.log('*******************************************************************');
         require(bytes(d.id).length != 0);
         DiscoStatus memory s = DiscoStatus(
             false,
@@ -162,6 +165,7 @@ contract Disco {
         IERC20 token = IERC20(d.tokenAddr);
         addr.setToken(token);
         addr.setSwap(uniswap);
+        console.log('1111');
 
         // disco id 与 disco 合约地址的映射
         DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr, token, address(0), 0, 0, 0);
@@ -233,6 +237,7 @@ contract Disco {
         //if minFundRaising is a bottom of pool.
         discoStatus.isSuccess = investAmt >= info.minFundRaising;
         status[id] = discoStatus;
+        console.log('1111');
         if (discoStatus.isSuccess) {
             assign(id, investAmt);
         } else {
